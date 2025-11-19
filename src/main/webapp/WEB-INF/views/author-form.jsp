@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>${author.id == null ? 'Add' : 'Edit'} Author</h1>
-    <form:form modelAttribute="author" method="post">
+    <form:form modelAttribute="author" method="post" action="/authors">
         <form:hidden path="id" />
         <label>Name:</label> <form:input path="name" /><br>
         <label>Biography:</label> <form:textarea path="biography" /><br>

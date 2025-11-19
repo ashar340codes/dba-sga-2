@@ -54,4 +54,22 @@ public class BookController {
     model.addAttribute("authors", authorService.findAll());
     return "book-form";
   }
+
+  @PostMapping("/edit/{id}")
+  public String updateBook(@PathVariable Long id, @ModelAttribute Book book, Model model) {
+    try {
+      book.setId(id);
+      bookService.save(book);
+      return "redirect:/books";
+    } catch (Exception e) {
+      model.addAttribute("error", "Error updating book: " + e.getMessage());
+      model.addAttribute("authors", authorService.findAll());
+      return "book-form";
+    }
+  }
+
+  @PostMapping("/new")
+  public String createBookViaNew(@ModelAttribute Book book, Model model) {
+    return saveBook(book, model);
+  }
 }

@@ -46,4 +46,21 @@ public class AuthorController {
     model.addAttribute("author", author);
     return "author-form";
   }
+
+  @PostMapping("/edit/{id}")
+  public String updateAuthor(@PathVariable Long id, @ModelAttribute Author author, Model model) {
+    try {
+      author.setId(id);
+      authorService.save(author);
+      return "redirect:/authors";
+    } catch (Exception e) {
+      model.addAttribute("error", "Error updating author: " + e.getMessage());
+      return "author-form";
+    }
+  }
+
+  @PostMapping("/new")
+  public String createAuthorViaNew(@ModelAttribute Author author, Model model) {
+    return saveAuthor(author, model);
+  }
 }
