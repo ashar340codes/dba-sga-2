@@ -1,0 +1,18 @@
+# Maven build output
+/target/
+
+# Local Maven installation used for builds
+/.maven/
+
+# IDE/editor metadata
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# OS / tooling noise
+.DS_Store
+Thumbs.db
+*.log
+
